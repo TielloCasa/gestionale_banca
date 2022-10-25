@@ -48,8 +48,24 @@ public class Banca {
 				}
 			
 			if(verifica) {
+				
 			System.out.println("Inserire il saldo");
+			boolean ver=false;
+			while(!ver) {
+				
+			try {
+				
 			saldo=Double.parseDouble(in.nextLine());
+			ver=true;
+			
+			}catch(Exception e) {
+				
+			ver=false;
+			System.out.println("Hai sbagliato il tipo di input, dev'essere una cifra, ritenta");
+			
+			}
+			}
+			
 			for(int j=0;j<correntista.size();j++) {  //controllo se già esiste il cf cosi da assegnare il conto a quella persona
 				if(correntista.get(j).getCf().equals(cf)) {
 					if(correntista.get(j).getNome().equals(nome) && correntista.get(j).getCognome().equals(cognome)) {
@@ -153,7 +169,7 @@ public class Banca {
 		
 		boolean verifica=false; //verifica se il prelievo è andato a buon fine
 		int scelta=0; //scelta del prelievo tramite cf o n_conto
-		int prelievo; //somma da prelevare
+		int prelievo=0; //somma da prelevare
 		String appoggio; //appoggio per prendere il cf o n_conto della persona che vuole prelevare 
 		System.out.println("1)Prelievo per codice fiscale");
 		System.out.println("2)Prelievo per numero conto");
@@ -172,7 +188,21 @@ public class Banca {
 					}else{
 					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(0).getSaldo());
 					System.out.println("Quanto vuoi prelevare?");
+					boolean ver=false;
+					while(!ver) {
+						
+					try {
+						
 					prelievo=Integer.parseInt(in.nextLine());
+					ver=true;
+					
+					}catch(Exception e) {
+						
+					ver=false;
+					System.out.println("Hai sbagliato il tipo di input, dev'essere una cifra, ritenta");
+					
+					}
+					}
 					if(prelievo>correntista.get(i).conto.get(0).getSaldo()) { //se il prelievo è maggiore del conto, annulla il prelievo
 					System.out.println("Non è possibile svolgere l'azione");
 					}else{
@@ -192,7 +222,21 @@ public class Banca {
 				if(correntista.get(i).conto.get(j).getNumero_conto().equals(appoggio)) {
 					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(j).getSaldo());
 					System.out.println("Quanto vuoi prelevare?");
+					boolean ver=false;
+					while(!ver) {
+						
+					try {
+						
 					prelievo=Integer.parseInt(in.nextLine());
+					ver=true;
+					
+					}catch(Exception e) {
+						
+					ver=false;
+					System.out.println("Hai sbagliato il tipo di input, dev'essere una cifra, ritenta");
+					
+					}
+					}
 					if(prelievo>correntista.get(i).conto.get(j).getSaldo()) {
 					System.out.println("Non è possibile svolgere l'azione");
 					}else{
@@ -221,7 +265,7 @@ public class Banca {
 		
 		boolean verifica; //verifica per controllare se il versamento è andato a buon fine
 		String cf;//cf da prendere in input
-		int versamento; //valore versamento
+		int versamento=0; //valore versamento
 		int scelta=0;
 		String appoggio;
 		System.out.println("Versamento:");
@@ -230,8 +274,20 @@ public class Banca {
 		System.out.println("1)Versamento per codice fiscale");
 		System.out.println("2)Versamento per numero conto");
 		
+		
 		verifica=false;
-		scelta=Integer.parseInt(in.nextLine());
+		while(!verifica) {
+		try {
+		scelta = Integer.parseInt(in.nextLine());
+		verifica=true;
+		}catch(Exception e) {
+		verifica=false;
+		System.out.println("Hai sbagliato il tipo di input, ritenta");
+		}
+		}
+		
+		
+		verifica=false;
 		switch(scelta) {
 		case 1:
 			System.out.println("Dammi il CF");
@@ -244,8 +300,21 @@ public class Banca {
 					}else{
 					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(0).getSaldo());
 					System.out.println("Quanto vuoi versare?");
+					boolean ver=false;
+					while(!ver) {
+						
+					try {
+						
 					versamento=Integer.parseInt(in.nextLine());
+					ver=true;
 					
+					}catch(Exception e) {
+						
+					ver=false;
+					System.out.println("Hai sbagliato il tipo di input, dev'essere una cifra, ritenta");
+					
+					}
+					}
 					correntista.get(i).conto.get(0).setSaldo((correntista.get(i).conto.get(0).getSaldo()+versamento));
 					System.out.println("Versamento eseguito");
 					verifica=true;
@@ -262,7 +331,21 @@ public class Banca {
 				if(correntista.get(i).conto.get(j).getNumero_conto().equals(appoggio)) {
 					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(j).getSaldo());
 					System.out.println("Quanto vuoi versare?");
+					boolean ver=false;
+					while(!ver) {
+						
+					try {
+						
 					versamento=Integer.parseInt(in.nextLine());
+					ver=true;
+					
+					}catch(Exception e) {
+						
+					ver=false;
+					System.out.println("Hai sbagliato il tipo di input, dev'essere una cifra, ritenta");
+					
+					}
+					}
 					
 					correntista.get(i).conto.get(j).setSaldo((correntista.get(i).conto.get(j).getSaldo()+versamento));
 					System.out.println("Versamento eseguito");
