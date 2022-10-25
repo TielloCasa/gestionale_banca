@@ -170,13 +170,13 @@ public class Banca {
 					if(correntista.get(i).conto.size()>1) { //se il correntista ha più conti, blocca la ricerca per cf
 						System.out.println("L'utente ha più conti, è preferibile fare la ricerca tramite n_conto");
 					}else{
-					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(i).getSaldo());
+					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(0).getSaldo());
 					System.out.println("Quanto vuoi prelevare?");
 					prelievo=Integer.parseInt(in.nextLine());
-					if(prelievo>correntista.get(i).conto.get(i).getSaldo()) { //se il prelievo è maggiore del conto, annulla il prelievo
+					if(prelievo>correntista.get(i).conto.get(0).getSaldo()) { //se il prelievo è maggiore del conto, annulla il prelievo
 					System.out.println("Non è possibile svolgere l'azione");
 					}else{
-					correntista.get(i).conto.get(i).setSaldo((correntista.get(i).conto.get(i).getSaldo()-prelievo));
+					correntista.get(i).conto.get(0).setSaldo((correntista.get(i).conto.get(0).getSaldo()-prelievo));
 					System.out.println("Prelievo eseguito");
 					verifica=true;
 					}
@@ -242,15 +242,15 @@ public class Banca {
 					if(correntista.get(i).conto.size()>1) {
 						System.out.println("L'utente ha più conti, è preferibile fare la ricerca tramite n_conto");
 					}else{
-					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(i).getSaldo());
+					System.out.println("Il saldo disponibile è di "+correntista.get(i).conto.get(0).getSaldo());
 					System.out.println("Quanto vuoi versare?");
 					versamento=Integer.parseInt(in.nextLine());
 					
-					correntista.get(i).conto.get(i).setSaldo((correntista.get(i).conto.get(i).getSaldo()+versamento));
+					correntista.get(i).conto.get(0).setSaldo((correntista.get(i).conto.get(0).getSaldo()+versamento));
 					System.out.println("Versamento eseguito");
 					verifica=true;
 					}
-					
+				
 				}
 			}
 			break;
