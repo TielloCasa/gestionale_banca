@@ -10,7 +10,7 @@ public class Menu {
 	
 	
 public void stampaMenu(Banca banca) {
-	
+	boolean verifica;
 	charge=false;
 	while(scelta!=7) {
 	System.out.println("Cosa vuoi fare?");
@@ -22,7 +22,17 @@ public void stampaMenu(Banca banca) {
 	System.out.println("6)Stampa dettagliata egli utenti");
 	System.out.println("7)Esci");
 	
+	verifica=false;
+	while(!verifica) {
+	try {
 	scelta = Integer.parseInt(in.nextLine());
+	verifica=true;
+	}catch(Exception e) {
+	verifica=false;
+	System.out.println("Hai sbagliato il tipo di input, ritenta");
+	}
+	}
+	
 	switch(scelta) {
 	case 1:
 		banca.caricamento();
