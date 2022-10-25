@@ -32,7 +32,7 @@ public class Banca {
 			nome=in.nextLine();
 			System.out.println("Inserire il cognome del propietario del "+(i+1)+"o conto");
 			cognome=in.nextLine();
-			System.out.println("Inserire il nome del propietario del "+(i+1)+"o conto");
+			System.out.println("Inserire il cf del propietario del "+(i+1)+"o conto");
 			cf=in.nextLine();
 			
 			System.out.println("Dammi il numero del conto della "+(i+1)+"o conto");
@@ -52,9 +52,15 @@ public class Banca {
 			saldo=Double.parseDouble(in.nextLine());
 			for(int j=0;j<correntista.size();j++) {  //controllo se già esiste il cf cosi da assegnare il conto a quella persona
 				if(correntista.get(j).getCf().equals(cf)) {
+					if(correntista.get(j).getNome().equals(nome) && correntista.get(j).getCognome().equals(cognome)) {
 					System.out.println("Conto aggiunto a persona esistente");
 					this.correntista.get(j).conto.add(new ContoCorrente(n_conto, saldo));
 					verifica=false;
+				}else{
+					System.out.println("IL CF PUO' APPARTENERE AD UN SOLO CORRENTISTA, reinserisci");
+					verifica=false;
+					i--;
+				}
 				}
 			}
 			}
